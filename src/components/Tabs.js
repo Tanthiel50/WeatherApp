@@ -13,19 +13,16 @@ const Tabs = ({ weather }) => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: 'lightseagreen',
+        tabBarInactiveTintColor: 'black',
+        tabBarShowLabel: false, // Ici, utilisez un booléen, pas une chaîne de caractères
         tabBarStyle: {
-          backgroundColor: 'lightblue'
+          backgroundColor: 'rgba(0, 0, 1, 0.5)',
+          borderTopWidth: 0, 
+          position: 'absolute', 
+          elevation: 0, 
         },
-        headerStyle: {
-          backgroundColor: 'lightblue'
-        },
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize: 25,
-          color: 'tomato'
-        }
+        headerShown: false, 
       }}
     >
       <Tab.Screen
@@ -35,7 +32,7 @@ const Tabs = ({ weather }) => {
             <Feather
               name={'droplet'}
               size={25}
-              color={focused ? 'tomato' : 'black'}
+              color={focused ? 'white' : 'black'}
             />
           )
         }}
@@ -49,27 +46,27 @@ const Tabs = ({ weather }) => {
             <Feather
               name={'clock'}
               size={25}
-              color={focused ? 'tomato' : 'black'}
+              color={focused ? 'white' : 'black'}
             />
           )
         }}
       >
         {() => <UpcomingWeather weatherData={weather.list} />}
       </Tab.Screen>
-      <Tab.Screen
+      {/* <Tab.Screen
         name={'City'}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
               name={'home'}
               size={25}
-              color={focused ? 'tomato' : 'black'}
+              color={focused ? 'white' : 'black'}
             />
           )
         }}
       >
         {() => <City weatherData={weather.city} />}
-      </Tab.Screen>
+      </Tab.Screen> */}
     </Tab.Navigator>
   )
 }

@@ -1,11 +1,17 @@
 import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { 
+  View, 
+  Text, 
+  SafeAreaView, 
+  StyleSheet,
+  ImageBackground 
+} from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText'
 import { weatherType } from '../utilities/weatherType'
 
 const CurrentWeather = ({ weatherData }) => {
-  const { main: { temp, feels_like, temp_max, temp_min }, weather } = weatherData
+  const { main: { temp, feels_like, temp_max, temp_min }, weather, name } = weatherData
   const weatherCondition = weather[0].main
 
   const {
@@ -17,7 +23,8 @@ const CurrentWeather = ({ weatherData }) => {
     hiLow,
     bodyWrapper,
     description,
-    message
+    message,
+    image
   } = styles
 
   return (
@@ -27,7 +34,12 @@ const CurrentWeather = ({ weatherData }) => {
         { backgroundColor: weatherType[weatherCondition]?.backgroundColor }
       ]}
     >
+    <ImageBackground
+        style={image}
+        source={require('../../assets/current-background.jpg')}
+      >
       <View style={container}>
+      <Text style={styles.cityName}>{name}</Text>
         <Feather
           name={weatherType[weatherCondition]?.icon}
           size={100}
@@ -43,13 +55,14 @@ const CurrentWeather = ({ weatherData }) => {
           messageTwoStyles={hiLow}
         />
       </View>
-      <RowText
+      {/* <RowText
         messageOne={weather[0]?.description}
         messageTwo={weatherType[weatherCondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
-      />
+      /> */}
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -63,16 +76,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  image: {
+    flex: 1
+  },
   temperature: {
-    color: 'black',
+    color: 'white',
     fontSize: 48
   },
   feels: {
     fontSize: 30,
-    color: 'black'
+    color: 'white'
   },
   hiLow: {
-    color: 'black',
+    color: 'white',
     fontSize: 20
   },
   hiLowWrapper: {
@@ -89,6 +105,13 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 25
-  }
+  },
+  cityName: {
+    fontSize: 32, 
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20, 
+  },
 })
 export default CurrentWeather
