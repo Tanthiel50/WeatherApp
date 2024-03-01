@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons'
 const ErrorItem = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.errorMessage}>Sorry something went wrong</Text>
+      <Text style={styles.errorMessage}>Ca marche pas qu'il dit le monsieur</Text>
       <Feather name={'frown'} size={100} color={'white'} />
     </View>
   )

@@ -15,7 +15,7 @@ const Tabs = ({ weather }) => {
       screenOptions={{
         tabBarActiveTintColor: 'lightseagreen',
         tabBarInactiveTintColor: 'black',
-        tabBarShowLabel: false, // Ici, utilisez un booléen, pas une chaîne de caractères
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: 'rgba(0, 0, 1, 0.5)',
           borderTopWidth: 0, 
